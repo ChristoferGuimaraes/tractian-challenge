@@ -2,10 +2,19 @@ import "./styles.css";
 import api from "../../services/api/index";
 import { useState, useEffect } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { HiDotsHorizontal } from "react-icons/hi";
 
 function Main() {
   const [assets, setAssets] = useState([]);
+
+  useEffect(() => {
+    api.get("db").then(({ data }) => {
+      setAssets(data.assets);
+    });
+    console.log(assets);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function statusIcon(asset) {
     const styles = {
@@ -25,18 +34,13 @@ function Main() {
     }
   }
 
-  useEffect(() => {
-    api.get("db").then(({ data }) => {
-      setAssets(data.assets);
-    });
-    console.log(assets);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  function openMore(asset) {
+    console.log(`clicou em ${asset.id}`);
+  }
 
   return (
     <div className="App">
-      <h1>Ativos</h1>
+      <h1 className="center">Ativos</h1>
       <table border="1" className="table-container">
         <thead>
           <tr>
@@ -46,11 +50,11 @@ function Main() {
             <th>Sensors</th>
             <th className="center">Status</th>
             <th className="center">Health Score</th>
-            <th className="center">Actions</th>
+            <th className="center">More</th>
           </tr>
         </thead>
         <tbody>
-        {assets?.map((asset) => (
+          {assets?.map((asset) => (
             <tr key={asset.id}>
               <td className="center">{asset.id}</td>
               <td>{asset.name}</td>
@@ -58,10 +62,17 @@ function Main() {
               <td>{asset.sensors}</td>
               <td className="center">{statusIcon(asset)}</td>
               <td className="center">{asset.healthscore}</td>
-              <td className="center"><FaTrashAlt className="icons"/><FaEdit onClick={() => console.log(`clicou em ${asset.id}`)} className="icons"/></td>
+              <td className="center">
+                <div>
+                  <HiDotsHorizontal
+                    className="icons"
+                    onClick={() => openMore(asset)}
+                  />
+                </div>
+              </td>
             </tr>
-        ))}
-      </tbody>
+          ))}
+        </tbody>
       </table>
     </div>
   );
