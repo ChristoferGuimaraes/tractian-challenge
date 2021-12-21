@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
 
-function Main() {
+function Assets() {
   const [assets, setAssets] = useState([]);
 
   useEffect(() => {
     api.get("db").then(({ data }) => {
+      data.moreInfo = '';
       setAssets(data.assets);
+      console.log(data)
+    
     });
     console.log(assets);
 
@@ -78,4 +81,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Assets;

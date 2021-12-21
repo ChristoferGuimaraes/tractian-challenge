@@ -1,0 +1,142 @@
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: #1e3a8a;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.logo {
+  height: 60px;
+  line-height: 60px;
+  font-size: 2em;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+#toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: #4063c2;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#toggle::before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  transform: translateY(-5px);
+  transition: 0.2s;
+}
+
+#toggle::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  transform: translateY(5px);
+  transition: 0.2s;
+}
+
+#toggle.active::before {
+  transform: translateY(0px) rotate(45deg);
+}
+
+#toggle.active::after {
+  transform: translateY(0px) rotate(-45deg);
+}
+
+#toggle.active {
+  background: rgb(206, 57, 2);
+}
+
+#navbar {
+  position: relative;
+  height: 60px;
+  right: 60px;
+  background: #1e3a8a;
+  transition: 0.5s;
+  width: 0px;
+  overflow: hidden;
+}
+
+#navbar.active {
+  width: 450px;
+}
+
+#navbar ul {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+#navbar ul li {
+  list-style: none;
+}
+
+#navbar ul li a {
+  font-family: "Poppins", "Nunito sans", sans-serif;
+  color: rgb(255, 255, 255);
+  height: 60px;
+  line-height: 60px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 0 15px;
+  letter-spacing: 2px;
+}
+
+#navbar ul li a:hover {
+  color: #1e3a8a;
+  background: rgb(255, 255, 255);
+}
+
+section {
+  font-family: "Poppins", "Nunito sans", sans-serif;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #f5f5f5;
+  font-size: 13vw;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  #navbar {
+    position: fixed;
+    bottom: -100%;
+    right: 0;
+    width: 100%;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #navbar.active {
+    height: calc(100vh - 60px);
+    bottom: 0;
+    width: 100%;
+  }
+  #navbar ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

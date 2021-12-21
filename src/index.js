@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Main from './components/main/index.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Routes from "./services/router/index"
 
 ReactDOM.render(
   <>
-    <Main />
+    <Routes />
   </>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
