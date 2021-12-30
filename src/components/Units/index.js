@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api/index";
-import "./styles.css"
 
 function Units() {
   const [units, setUnits] = useState([]);
@@ -16,9 +15,12 @@ function Units() {
   }, []);
 
   return (
-    <div className="App">
-      <h1 className="center">Units</h1>
-      <table border="1" className="table-container">
+    <>
+      <div className="margin-container">⠀</div>
+      <div className="title-container">
+        Companies
+      </div>
+      <table className="table-container">
         <thead>
           <tr>
             <th className="center">ID</th>
@@ -36,7 +38,7 @@ function Units() {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 
 }
