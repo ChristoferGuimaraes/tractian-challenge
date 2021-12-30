@@ -71,61 +71,61 @@ function Assets() {
           <div className="body-modal-container">
             <div className="img-modal-container">
               <Image
+                imgStyle={"image"}
                 imgLink={tempAsset.image}
-                imgWidth={"245"}
-                imgHeight={"245"}
+                imgWidth={"300"}
+                imgHeight={"300"}
               />
             </div>
-            <div className="props-modal-container">
-              <div>
-                <label className="prop-modal">ID:</label>{" "}
-                <label>{tempAsset.id}</label>
-              </div>
-              <div>
-                <label className="prop-modal">Model:</label>{" "}
-                <label>{tempAsset.model}</label>
-              </div>
-              <div>
-                <label className="prop-modal">Sensors:</label>{" "}
-                <label>{tempAsset.sensors}</label>
-              </div>
-              <div>
-                <label className="prop-modal">Health Score:</label>{" "}
-                {tempAsset.healthscore.toFixed(1)}%
-              </div>
-              <div>
-                <label className="prop-modal">Max Temp:</label>{" "}
-                {tempAsset.specifications.maxTemp} °C
-              </div>
+            <table className="table-props-container">
+              <tr>
+                <th className="prop-modal">ID:</th> <td className="center">{tempAsset.id}</td>
+              </tr>
+              <tr>
+                <th className="prop-modal">Model:</th>{" "}
+                <td className="center">{tempAsset.model}</td>
+              </tr>
+              <tr>
+                <th className="prop-modal">Sensors:</th>{" "}
+                <td className="center">{tempAsset.sensors}</td>
+              </tr>
+              <tr>
+                <th className="prop-modal">Health Score:</th>{" "}
+                <td className="center">{tempAsset.healthscore.toFixed(1)}%</td>
+              </tr>
+              <tr>
+                <th className="prop-modal">Max Temp:</th>{" "}
+                <td className="center">{tempAsset.specifications.maxTemp} °C</td>
+              </tr>
+
               {verifyRotation(tempAsset.specifications.rpm)}
               {verifyPower(tempAsset.specifications.power)}
-              <div>
-                <label className="prop-modal">Total Uptime:</label>{" "}
-                {tempAsset.metrics.totalUptime.toFixed(1)} h
-              </div>
-              <div>
-                <label className="prop-modal">Total Collects:</label>{" "}
-                {tempAsset.metrics.totalCollectsUptime}
-              </div>
-              <div className="prop-uptime-container">
-              <label className="prop-modal">Last Uptime:</label>
-              <div className="prop-uptime">
-                <div>
-                  <label>
-                    {" "}
-                    <BiCalendar /> {formatDate(tempAsset.metrics.lastUptimeAt)}
-                  </label>
-                </div>
-                <div>
-                  <label>
-                    {" "}
-                    <BiStopwatch />{" "}
-                    {formatHours(tempAsset.metrics.lastUptimeAt)}
-                  </label>
-                </div>
-              </div>
-            </div>
-            </div>
+              <tr>
+                <th className="prop-modal">Total Uptime:</th>{" "}
+                <td className="center">{tempAsset.metrics.totalUptime.toFixed(1)} h</td>
+              </tr>
+              <tr>
+                <th className="prop-modal">Total Collects:</th>{" "}
+                <td className="center">{tempAsset.metrics.totalCollectsUptime}</td>
+              </tr>
+              <tr>
+                <th className="prop-modal">Last Uptime:</th>
+                <td className="prop-uptime">
+                  <div>
+
+                      <BiCalendar />
+                      {formatDate(tempAsset.metrics.lastUptimeAt)}
+
+                  </div>
+                  <div>
+
+                      <BiStopwatch />
+                      {formatHours(tempAsset.metrics.lastUptimeAt)}
+
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         }
       />
@@ -143,9 +143,9 @@ function Assets() {
   function verifyRotation(prop) {
     if (prop !== undefined && prop !== null) {
       return (
-        <div>
-          <label className="prop-modal">Rotation:</label> {prop} RPM
-        </div>
+        <tr>
+          <th className="prop-modal">Rotation:</th> <td className="center">{prop} RPM</td>
+        </tr>
       );
     }
   }
@@ -153,9 +153,9 @@ function Assets() {
   function verifyPower(prop) {
     if (prop !== undefined && prop !== 0) {
       return (
-        <div>
-          <label className="prop-modal">Power:</label> {prop} kWh
-        </div>
+        <tr>
+          <th className="prop-modal">Power:</th> <td className="center">{prop} kWh</td>
+        </tr>
       );
     }
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Image({ imgLink, imgAlt, imgWidth, imgHeight }) {
+function Image({ imgLink, imgAlt, imgWidth, imgHeight, imgStyle }) {
   return (
 
       <img
@@ -8,6 +8,7 @@ function Image({ imgLink, imgAlt, imgWidth, imgHeight }) {
         alt={imgAlt}
         width={imgWidth}
         height={imgHeight}
+        className={imgStyle}
       />
 
   );
