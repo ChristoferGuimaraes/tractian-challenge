@@ -100,7 +100,7 @@
   color: grey
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .modal-container {
     width: 333px;
   }

@@ -62,6 +62,11 @@ th {
   position: relative;
 }
 
+.image {
+  width: 320px;
+  height: 320px;
+}
+
 .props-modal-container {
   text-align: left;
 }
@@ -70,6 +75,14 @@ th {
   display: flex;
   justify-content: space-between;
   margin-top: 18px;
+}
+
+.title-modal-icon-status {
+  vertical-align: middle;
+}
+
+.title-modal-elements {
+
 }
 
 .prop-modal {
@@ -91,9 +104,6 @@ th {
   border-radius: 6px;
 }
 
-.table-props-container {
-}
-
 .table-props-container th {
   background-color: #1e3a8a;
   color: #fff;
@@ -110,13 +120,23 @@ th {
 }
 
 @media (max-width: 800px) {
-  .body-modal-container {
-    text-align: left;
+  .image {
+    width: 200px;
+    height: 200px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .body-modal-container {
     display: block;
+  }
+
+  .body-modal {
+    display: inline-block;
+  }
+
+  .image {
+    width: 260px;
+    height: 260px;
   }
 }
