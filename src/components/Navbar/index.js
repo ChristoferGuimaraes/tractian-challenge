@@ -22,8 +22,7 @@ function Navbar() {
         <Image
           imgLink={"https://imgix.tractian.com/images/Logo-Tractian.svg"}
           imgAlt={"logo tractian"}
-          imgWidth={"170"}
-          imgHeight={"60"}
+          imgStyle={"tractian-logo"}
         />
       </Link>
       <div onClick={showContent} id="toggle" className={toggle}></div>

@@ -20,6 +20,11 @@ header {
   text-decoration: none;
 }
 
+.tractian-logo {
+  width: 160px;
+  height: 60px;
+}
+
 #toggle {
   position: absolute;
   top: 0;
