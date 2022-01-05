@@ -8,7 +8,9 @@
 
 .table-container {
   margin: 0px auto;
-  max-width: 800px;
+  width: 100%;
+  max-width: 730px;
+  min-width: 350px;
   border-collapse: collapse;
 }
 
@@ -24,14 +26,17 @@
   color: #1e3a8a;
 }
 
-.center {
-  text-align: center;
-}
-
 .table-container td,
 th {
+  padding: 8px;
+}
+
+.left {
   text-align: left;
-  padding: 12px;
+}
+
+.center {
+  text-align: center;
 }
 
 .table-container th {
@@ -50,10 +55,16 @@ th {
 
 .more-icon {
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .alert-icons {
-  font-size: 24px;
+  font-size: 18px;
+  
+}
+
+.body-modal {
+  width: 100%
 }
 
 .body-modal-container {
@@ -104,6 +115,10 @@ th {
   background-color: #1e3a8a;
   color: #fff;
   text-align: center;
+}
+
+.table-props-container {
+  display: inline-table;
 }
 
 .table-props-container tr:nth-child(odd) {

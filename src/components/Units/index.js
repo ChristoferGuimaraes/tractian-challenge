@@ -15,16 +15,17 @@ function Units() {
   }, []);
 
   return (
-    <>
+    <div>
       <div className="margin-container">⠀</div>
       <div className="title-container">
-        Companies
+        
+        Units
       </div>
       <table className="table-container">
         <thead>
           <tr>
             <th className="center">ID</th>
-            <th>Name</th>
+            <th className="left">Name</th>
             <th className="center">Company ID</th>
           </tr>
         </thead>
@@ -38,7 +39,7 @@ function Units() {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 
 }

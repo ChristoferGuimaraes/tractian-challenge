@@ -149,7 +149,7 @@ function Assets() {
     if (prop !== undefined && prop !== null) {
       return (
         <tr>
-          <th className="prop-modal">Rotation:</th>{" "}
+          <th className="prop-modal">Rotation:</th>
           <td className="center">{prop} RPM</td>
         </tr>
       );
@@ -160,7 +160,7 @@ function Assets() {
     if (prop !== undefined && prop !== 0) {
       return (
         <tr>
-          <th className="prop-modal">Power:</th>{" "}
+          <th className="prop-modal">Power:</th>
           <td className="center">{prop} kWh</td>
         </tr>
       );
@@ -168,7 +168,7 @@ function Assets() {
   }
 
   return (
-    <>
+    <div>
       {openModal === true && modal()}
       <div className="margin-container">⠀</div>
       <div className="title-container">Assets</div>
@@ -177,9 +177,9 @@ function Assets() {
         <thead>
           <tr>
             <th className="center">ID</th>
-            <th>Name</th>
-            <th>Model</th>
-            <th>Sensors</th>
+            <th className="left">Name</th>
+            <th className="left">Model</th>
+            <th className="left">Sensors</th>
             <th className="center">Status</th>
             <th className="center">More</th>
           </tr>
@@ -188,14 +188,14 @@ function Assets() {
           {assets?.map((asset) => (
             <tr key={asset.id}>
               <td className="center">{asset.id}</td>
-              <td>{asset.name}</td>
-              <td>{asset.model}</td>
-              <td>{asset.sensors}</td>
+              <td className="left">{asset.name}</td>
+              <td className="left">{asset.model}</td>
+              <td className="left">{asset.sensors}</td>
               <td className="center">{statusIcon(asset)}</td>
               <td className="center">
                 <div>
                   <HiDotsHorizontal
-                    className="more-icon"
+                    className="more-icon center"
                     onClick={() => openMore(asset)}
                   />
                 </div>
@@ -204,7 +204,7 @@ function Assets() {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

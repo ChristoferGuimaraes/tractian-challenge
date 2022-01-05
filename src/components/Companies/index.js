@@ -15,7 +15,7 @@ function Companies() {
   }, []);
 
   return (
-    <>
+    <div>
       <div className="margin-container">⠀</div>
       <div className="title-container">
         Companies
@@ -24,19 +24,19 @@ function Companies() {
         <thead>
           <tr>
             <th className="center">ID</th>
-            <th>Name</th>
+            <th className="left">Name</th>
           </tr>
         </thead>
         <tbody>
           {companies?.map((companie) => (
             <tr key={companie.id}>
               <td className="center">{companie.id}</td>
-              <td>{companie.name}</td>
+              <td className="left">{companie.name}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 
