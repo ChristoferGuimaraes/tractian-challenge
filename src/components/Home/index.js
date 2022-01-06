@@ -1,14 +1,83 @@
-import React from "react";
+import React, { useContext } from "react";
 import Assets from "../Assets/index";
 import Units from "../Units/index";
 import Users from "../Users/index";
 import Companies from "../Companies/index";
-
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 import "./styles.css";
+import { AssetsContext } from "../../contexts/AssetsContext";
 
 function Home() {
-  
-    return (
+  const { assets, ApiData } = useContext(AssetsContext);
+
+  ApiData();
+
+  const options = {
+    chart: {
+      type: "column",
+    },
+    title: {
+      text: "Equipament Health Score.",
+    },
+    subtitle: {
+      text: 'January, 2022',
+    },
+    accessibility: {
+      announceNewData: {
+        enabled: true,
+      },
+    },
+    xAxis: {
+      type: "category",
+    },
+    yAxis: {
+      title: {
+        text: "Health Score",
+      },
+    },
+    legend: {
+      enabled: false,
+    },
+    plotOptions: {
+      series: {
+        borderWidth: 0,
+        dataLabels: {
+          enabled: true,
+          format: "{point.y:.1f}%",
+        },
+      },
+    },
+
+    tooltip: {
+      headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+      pointFormat:
+        '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>',
+    },
+
+    series: [
+      {
+        name: "Equipament",
+        colorByPoint: true,
+        data: getAssets(),
+      },
+    ],
+  };
+
+  function getAssets() {
+    let assetsHealthscoreArray = [];
+    for (let i = 0; i < assets.length; i++) {
+      assetsHealthscoreArray.push({
+        name: assets[i]?.name,
+        y: assets[i]?.healthscore,
+      });
+      
+    }
+    return assetsHealthscoreArray;
+  }
+  console.log(getAssets())
+
+  return (
     <div className="all-data-container">
       <div className="data">
         <Assets />
@@ -25,8 +94,8 @@ function Home() {
       <div className="data">
         <Companies />
       </div>
-      <div id="chart">
-        
+      <div className="data">
+        <HighchartsReact highcharts={Highcharts} options={options} />
       </div>
     </div>
   );

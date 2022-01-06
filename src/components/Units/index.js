@@ -15,7 +15,7 @@ function Units() {
   }, []);
 
   return (
-    <div>
+    <div className="main-container">
       <div className="margin-container">⠀</div>
       <div className="title-container">
         
