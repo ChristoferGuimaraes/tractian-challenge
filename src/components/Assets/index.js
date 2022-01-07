@@ -22,7 +22,7 @@ function Assets() {
   function statusIcon(asset) {
     const styles = {
       red: { color: "red" },
-      yellow: { color: "yellow" },
+      yellow: { color: "rgb(250, 207, 16)" },
       green: { color: "green" },
     };
 
@@ -42,6 +42,20 @@ function Assets() {
     }
   }
 
+  function statusText(asset) {
+    if (asset.status === "inAlert") {
+      return <span>In Alert </span>;
+    }
+    if (asset.status === "inDowntime") {
+      return <span>In Downtime </span>;
+    }
+    if (asset.status === "inOperation") {
+      return <span>In Operation </span>;
+    }
+
+    return;
+  }
+
   function openMore(asset) {
     setTempAsset(asset);
     setOpenModal(true);
@@ -54,10 +68,10 @@ function Assets() {
         btnName={"Close"}
         title={
           <div className="title-modal-container">
-            <span className="title-modal-elements">{tempAsset.name}</span>
+            <span className="modal-title">{tempAsset.name}</span>
             <span className="title-modal-elements">
-              Status:
-              <span className="title-modal-icon-status">
+              {statusText(tempAsset)}
+              <span className="icon-align">
                 {statusIcon(tempAsset)}
               </span>
             </span>
@@ -76,53 +90,53 @@ function Assets() {
             <table className="body-modal-container">
               <tbody className="table-props-container">
                 <tr>
-                  <th className="prop-modal">ID:</th>
+                  <th className="prop-modal">ID</th>
                   <td className="center">{tempAsset.id}</td>
                 </tr>
                 <tr>
-                  <th className="prop-modal">Model:</th>
+                  <th className="prop-modal">Model</th>
                   <td className="center">{tempAsset.model}</td>
                 </tr>
                 <tr>
-                  <th className="prop-modal">Sensors:</th>
+                  <th className="prop-modal">Sensors</th>
                   <td className="center">{tempAsset.sensors}</td>
                 </tr>
                 <tr>
-                  <th className="prop-modal">Health Score:</th>
+                  <th className="prop-modal">Health Score</th>
                   <td className="center">
                     {tempAsset.healthscore.toFixed(1)}%
                   </td>
                 </tr>
                 <tr>
-                  <th className="prop-modal">Max Temp:</th>
+                  <th className="prop-modal">Max Temp</th>
                   <td className="center">
                     {tempAsset.specifications.maxTemp} °C
                   </td>
                 </tr>
-
                 {verifyRotation(tempAsset.specifications.rpm)}
                 {verifyPower(tempAsset.specifications.power)}
                 <tr>
-                  <th className="prop-modal">Total Uptime:</th>
+                  <th className="prop-modal">Total Uptime</th>
                   <td className="center">
                     {tempAsset.metrics.totalUptime.toFixed(1)} h
                   </td>
                 </tr>
                 <tr>
-                  <th className="prop-modal">Total Collects:</th>
+                  <th className="prop-modal">Total Collects</th>
                   <td className="center">
                     {tempAsset.metrics.totalCollectsUptime}
                   </td>
                 </tr>
                 <tr>
-                  <th className="prop-modal">Last Uptime:</th>
-                  <td className="prop-uptime">
+                  <th className="prop-modal">Last Uptime</th>
+                  <td className="prop-uptime-modal left">
                     <div>
-                      <BiCalendar />
+                    <span className="icon-align">
+                      <BiCalendar /></span>
                       {formatDate(tempAsset.metrics.lastUptimeAt)}
                     </div>
                     <div>
-                      <BiStopwatch />
+                      <span className="icon-align"><BiStopwatch /></span>
                       {formatHours(tempAsset.metrics.lastUptimeAt)}
                     </div>
                   </td>
@@ -147,7 +161,7 @@ function Assets() {
     if (prop !== undefined && prop !== null) {
       return (
         <tr>
-          <th className="prop-modal">Rotation:</th>
+          <th className="prop-modal">Rotation</th>
           <td className="center">{prop} RPM</td>
         </tr>
       );
@@ -158,7 +172,7 @@ function Assets() {
     if (prop !== undefined && prop !== 0) {
       return (
         <tr>
-          <th className="prop-modal">Power:</th>
+          <th className="prop-modal">Power</th>
           <td className="center">{prop} kWh</td>
         </tr>
       );
@@ -176,7 +190,7 @@ function Assets() {
           <tr>
             <th className="center">ID</th>
             <th className="left">Name</th>
-            <th className="left">Model</th>
+
             <th className="left">Sensors</th>
             <th className="center">Status</th>
             <th className="center">More</th>
@@ -187,7 +201,7 @@ function Assets() {
             <tr key={asset.id}>
               <td className="center">{asset.id}</td>
               <td className="left">{asset.name}</td>
-              <td className="left">{asset.model}</td>
+
               <td className="left">{asset.sensors}</td>
               <td className="center">{statusIcon(asset)}</td>
               <td className="center">

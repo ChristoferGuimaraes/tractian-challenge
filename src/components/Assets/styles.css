@@ -88,8 +88,12 @@ th {
   margin-top: 18px;
 }
 
-.title-modal-icon-status {
+.icon-align {
   vertical-align: middle;
+}
+
+.title-modal-elements {
+  margin-top: 5px;
 }
 
 .prop-modal {
@@ -100,6 +104,11 @@ th {
 
 .prop-uptime-container {
   display: flex;
+}
+
+.prop-uptime-modal {
+  padding: 2px;
+  display: block;
 }
 
 .img-modal-container {

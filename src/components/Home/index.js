@@ -5,8 +5,8 @@ import Users from "../Users/index";
 import Companies from "../Companies/index";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import "./styles.css";
 import { AssetsContext } from "../../contexts/AssetsContext";
+import "./styles.css";
 
 function Home() {
   const { assets, ApiData } = useContext(AssetsContext);
@@ -21,7 +21,7 @@ function Home() {
       text: "Equipament Health Score.",
     },
     subtitle: {
-      text: 'January, 2022',
+      text: "January, 2022",
     },
     accessibility: {
       announceNewData: {
@@ -71,11 +71,10 @@ function Home() {
         name: assets[i]?.name,
         y: assets[i]?.healthscore,
       });
-      
     }
     return assetsHealthscoreArray;
   }
-  console.log(getAssets())
+  console.log(getAssets());
 
   return (
     <div className="all-data-container">
@@ -86,16 +85,19 @@ function Home() {
       <div className="data">
         <Users />
       </div>
+      <div>
+        <div className="data">
+          <Units />
+        </div>
 
-      <div className="data">
-        <Units />
+        <div className="data">
+          <Companies />
+        </div>
       </div>
-
-      <div className="data">
-        <Companies />
-      </div>
-      <div className="data">
-        <HighchartsReact highcharts={Highcharts} options={options} />
+      <div className="data chart">
+        <div className="chart">
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
       </div>
     </div>
   );

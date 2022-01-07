@@ -9,9 +9,6 @@ function Users() {
       setUsers(data.users);
       console.log(data);
     });
-    console.log(users);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -26,8 +23,8 @@ function Users() {
             <th className="center">ID</th>
             <th className="left">Name</th>
             <th className="left">E-mail</th>
-            <th className="center">Unit ID</th>
-            <th className="center">Company ID</th>
+
+
           </tr>
         </thead>
         <tbody>
@@ -36,8 +33,8 @@ function Users() {
               <td className="center">{user.id}</td>
               <td className="left">{user.name}</td>
               <td className="left">{user.email}</td>
-              <td className="center">{user.unitId}</td>
-              <td className="center">{user.companyId}</td>
+              
+            
             </tr>
           ))}
         </tbody>

@@ -26,15 +26,15 @@ function Units() {
           <tr>
             <th className="center">ID</th>
             <th className="left">Name</th>
-            <th className="center">Company ID</th>
+
           </tr>
         </thead>
         <tbody>
           {units?.map((unit) => (
             <tr key={unit.id}>
               <td className="center">{unit.id}</td>
-              <td>{unit.name}</td>
-              <td className="center">{unit.companyId}</td>
+              <td className="left">{unit.name}</td>
+             
             </tr>
           ))}
         </tbody>
