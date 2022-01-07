@@ -10,10 +10,10 @@ import { BiCalendar, BiStopwatch } from "react-icons/bi";
 import Modal from "../Modal/index";
 import Image from "../Image/index";
 import moment from "moment";
-import { AssetsContext } from "../../contexts/AssetsContext.js";
+import { DataContext } from "../../contexts/DataContext.js";
 
 function Assets() {
-  const { assets, ApiData } = useContext(AssetsContext);
+  const { assets, ApiData } = useContext(DataContext);
   const [openModal, setOpenModal] = useState(false);
   const [tempAsset, setTempAsset] = useState("");
 

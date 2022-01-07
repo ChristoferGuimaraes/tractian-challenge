@@ -1,25 +1,13 @@
-import { useState, useEffect } from "react";
-import api from "../../services/api/index";
+import React, { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 
 function Companies() {
-  const [companies, setCompanies] = useState([]);
-
-  useEffect(() => {
-    api.get("db").then(({ data }) => {
-      setCompanies(data.companies);
-      console.log(data);
-    });
-    console.log(companies);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  const { companies, ApiData } = useContext(DataContext);
+  ApiData();
   return (
     <div className="main-container">
       <div className="margin-container">⠀</div>
-      <div className="title-container">
-        Companies
-      </div>
+      <div className="title-container">Companies</div>
       <table className="table-container">
         <thead>
           <tr>

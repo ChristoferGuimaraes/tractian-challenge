@@ -1,19 +1,8 @@
-import { useState, useEffect } from "react";
-import api from "../../services/api/index";
-
+import React, { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 function Units() {
-  const [units, setUnits] = useState([]);
-
-  useEffect(() => {
-    api.get("db").then(({ data }) => {
-      setUnits(data.units);
-      console.log(data);
-    });
-    console.log(units);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  const { units, ApiData } = useContext(DataContext)
+  ApiData()
   return (
     <div className="main-container">
       <div className="margin-container">⠀</div>

@@ -7,19 +7,39 @@ import Users from "../../components/Users/index";
 import Companies from "../../components/Companies/index";
 import Navbar from "../../components/Navbar/index";
 import Home from "../../components/Home/index";
-import { AssetsContext } from "../../contexts/AssetsContext";
-import api from "../api/index"
+import { DataContext } from "../../contexts/DataContext";
+import api from "../api/index";
 
 const Paths = () => {
   const [assets, setAssets] = useState([]);
-  const ApiData = () => useEffect(() => {
-    api.get("db").then(({ data }) => {
-      setAssets(data.assets);
-    });
-  }, []);
+  const [users, setUsers] = useState([]);
+  const [units, setUnits] = useState([]);
+  const [companies, setCompanies] = useState([]);
+
+  const ApiData = () =>
+    useEffect(() => {
+      api.get("db").then(({ data }) => {
+        setAssets(data.assets);
+        setUsers(data.users);
+        setCompanies(data.companies);
+        setUnits(data.units);
+      });
+    }, []);
   return (
     <Router>
-      <AssetsContext.Provider value={{ assets, setAssets, ApiData }}>
+      <DataContext.Provider
+        value={{
+          ApiData,
+          assets,
+          setAssets,
+          users,
+          setUsers,
+          units,
+          setUnits,
+          companies,
+          setCompanies,
+        }}
+      >
         <Navbar />
         <Routes>
           <Route element={<Home />} path="/" exact />
@@ -28,7 +48,7 @@ const Paths = () => {
           <Route element={<Users />} path="/users" />
           <Route element={<Companies />} path="/companies" />
         </Routes>
-      </AssetsContext.Provider>
+      </DataContext.Provider>
     </Router>
   );
 };

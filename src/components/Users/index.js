@@ -1,16 +1,9 @@
-import { useState, useEffect } from "react";
-import api from "../../services/api/index";
+import React, {useContext} from "react";
+import { DataContext } from "../../contexts/DataContext";
 
 function Users() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    api.get("db").then(({ data }) => {
-      setUsers(data.users);
-      console.log(data);
-    });
-  }, []);
-
+  const { users, ApiData } = useContext(DataContext);
+  ApiData()
   return (
     <div className="main-container">
       <div className="margin-container">⠀</div>

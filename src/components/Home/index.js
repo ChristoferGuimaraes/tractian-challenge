@@ -5,11 +5,11 @@ import Users from "../Users/index";
 import Companies from "../Companies/index";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { AssetsContext } from "../../contexts/AssetsContext";
+import { DataContext } from "../../contexts/DataContext";
 import "./styles.css";
 
 function Home() {
-  const { assets, ApiData } = useContext(AssetsContext);
+  const { assets, ApiData } = useContext(DataContext);
 
   ApiData();
 
