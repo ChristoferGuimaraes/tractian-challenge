@@ -23,6 +23,7 @@ const Paths = () => {
         setUsers(data.users);
         setCompanies(data.companies);
         setUnits(data.units);
+        console.log('oi')
       });
     }, []);
   return (

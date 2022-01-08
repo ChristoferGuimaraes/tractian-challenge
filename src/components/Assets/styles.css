@@ -63,6 +63,11 @@ th {
   
 }
 
+.modal-title {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
 .body-modal {
   width: 100%
 }
@@ -93,7 +98,7 @@ th {
 }
 
 .title-modal-elements {
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .prop-modal {

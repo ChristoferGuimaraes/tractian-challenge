@@ -74,7 +74,6 @@ function Home() {
     }
     return assetsHealthscoreArray;
   }
-  console.log(getAssets());
 
   return (
     <div className="all-data-container">
