@@ -11,6 +11,7 @@ import Modal from "../Modal/index";
 import Image from "../Image/index";
 import moment from "moment";
 import { DataContext } from "../../contexts/DataContext.js";
+import SearchBar from "../SearchBar/index"
 
 function Assets() {
   const { assets, ApiData } = useContext(DataContext);
@@ -183,6 +184,7 @@ function Assets() {
     <div className="main-container">
       {openModal === true && modal()}
       <div className="margin-container">⠀</div>
+      <SearchBar />
       <div className="title-container">Assets</div>
 
       <table className="table-container">
