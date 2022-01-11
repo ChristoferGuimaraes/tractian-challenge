@@ -15,7 +15,20 @@
 }
 
 .margin-container {
-  margin-bottom: 80px;
+  margin-bottom: 70px;
+}
+
+.main-container-search {
+  margin-left: 20px;
+}
+
+.search-container {
+  margin-bottom: 13px;
+}
+
+.filter-tags {
+  margin: 5.4px;
+  cursor:pointer
 }
 
 .title-container {
@@ -60,7 +73,6 @@ th {
 
 .alert-icons {
   font-size: 18px;
-  
 }
 
 .modal-title {
@@ -69,7 +81,7 @@ th {
 }
 
 .body-modal {
-  width: 100%
+  width: 100%;
 }
 
 .body-modal-container {

@@ -1,22 +1,37 @@
 .main-container-search {
-  display: flex;
-  justify-content: right;
   margin-right: 30px;
+  height: 60px;
 }
 
 .search-container {
+  display: flex;
   border: 1px solid;
-  padding: 3px;
+  padding: 4px;
   border-radius: 7px;
+  padding-top: 5px;
+  justify-content: right;
+  max-width: 254px;
 }
 
 .search-icon {
   vertical-align: middle;
   margin-bottom: 2px;
+  font-size: 20px;
 }
 
 .input-element {
   outline: none;
   border: none;
-  padding-left: 3px;
+  padding-left: 2px;
+}
+
+.filter-btn-icon {
+  vertical-align: middle;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.filter-container {
+  height: 50px;
+  display: flex;
 }

@@ -11,12 +11,13 @@ import Modal from "../Modal/index";
 import Image from "../Image/index";
 import moment from "moment";
 import { DataContext } from "../../contexts/DataContext.js";
-import SearchBar from "../SearchBar/index"
+import SearchBar from "../SearchBar/index";
 
 function Assets() {
   const { assets, ApiData } = useContext(DataContext);
   const [openModal, setOpenModal] = useState(false);
   const [tempAsset, setTempAsset] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   ApiData();
 
@@ -72,9 +73,7 @@ function Assets() {
             <span className="modal-title">{tempAsset.name}</span>
             <span className="title-modal-elements">
               {statusText(tempAsset)}
-              <span className="icon-align">
-                {statusIcon(tempAsset)}
-              </span>
+              <span className="icon-align">{statusIcon(tempAsset)}</span>
             </span>
           </div>
         }
@@ -132,12 +131,15 @@ function Assets() {
                   <th className="prop-modal">Last Uptime</th>
                   <td className="prop-uptime-modal left">
                     <div>
-                    <span className="icon-align">
-                      <BiCalendar /></span>
+                      <span className="icon-align">
+                        <BiCalendar />
+                      </span>
                       {formatDate(tempAsset.metrics.lastUptimeAt)}
                     </div>
                     <div>
-                      <span className="icon-align"><BiStopwatch /></span>
+                      <span className="icon-align">
+                        <BiStopwatch />
+                      </span>
                       {formatHours(tempAsset.metrics.lastUptimeAt)}
                     </div>
                   </td>
@@ -180,11 +182,60 @@ function Assets() {
     }
   }
 
+  const filterTags = function () {
+    const tags = [
+      {
+        id: 1,
+        name: "Name",
+        toggle: false,
+      },
+      {
+        id: 2,
+        name: "Model",
+        toggle: false,
+      },
+      {
+        id: 3,
+        name: "Sensors",
+        toggle: false,
+      },
+      {
+        id: 4,
+        name: "Status",
+        toggle: false,
+      },
+      
+    ];
+    return tags;
+  };
+
+  const onClickBold = function () {
+    const bold = { fontWeight: "bold" };
+  };
+
   return (
     <div className="main-container">
       {openModal === true && modal()}
       <div className="margin-container">⠀</div>
-      <SearchBar />
+
+      <SearchBar
+        onChangeBtn={(e) => setSearchValue(e.target.value)}
+        filterBody={
+          <div className="filter-body-container">
+            {filterTags().map((tag) => {
+              return (
+                <span
+                  key={tag.id}
+                  className="filter-tags"
+                  style={onClickBold()}
+                >
+                  {tag.name}
+                </span>
+              );
+            })}
+          </div>
+        }
+      />
       <div className="title-container">Assets</div>
 
       <table className="table-container">
@@ -199,23 +250,29 @@ function Assets() {
           </tr>
         </thead>
         <tbody>
-          {assets?.map((asset) => (
-            <tr key={asset.id}>
-              <td className="center">{asset.id}</td>
-              <td className="left">{asset.name}</td>
+          {assets
+            ?.filter((asset) => {
+              return searchValue !== ""
+                ? asset.model.toLowerCase().includes(searchValue.toLowerCase())
+                : asset;
+            })
+            .map((asset) => (
+              <tr key={asset.id}>
+                <td className="center">{asset.id}</td>
+                <td className="left">{asset.name}</td>
 
-              <td className="left">{asset.sensors}</td>
-              <td className="center">{statusIcon(asset)}</td>
-              <td className="center">
-                <div>
-                  <HiDotsHorizontal
-                    className="more-icon center"
-                    onClick={() => openMore(asset)}
-                  />
-                </div>
-              </td>
-            </tr>
-          ))}
+                <td className="left">{asset.sensors}</td>
+                <td className="center">{statusIcon(asset)}</td>
+                <td className="center">
+                  <div>
+                    <HiDotsHorizontal
+                      className="more-icon center"
+                      onClick={() => openMore(asset)}
+                    />
+                  </div>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
