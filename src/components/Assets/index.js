@@ -18,6 +18,7 @@ function Assets() {
   const [openModal, setOpenModal] = useState(false);
   const [tempAsset, setTempAsset] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [handleChangeRadio, setHandleChangeRadio] = useState("name");
 
   ApiData();
 
@@ -182,68 +183,65 @@ function Assets() {
     }
   }
 
-  const filterTags = function () {
-    const tags = [
-      {
-        id: 1,
-        name: "Name",
-        toggle: false,
-      },
-      {
-        id: 2,
-        name: "Model",
-        toggle: false,
-      },
-      {
-        id: 3,
-        name: "Sensors",
-        toggle: false,
-      },
-      {
-        id: 4,
-        name: "Status",
-        toggle: false,
-      },
-      
-    ];
-    return tags;
-  };
-
-  const onClickBold = function () {
-    const bold = { fontWeight: "bold" };
-  };
+  function changeFilter(asset) {
+    if (handleChangeRadio === "name") {
+      return asset.name;
+    }
+    if (handleChangeRadio === "model") {
+      return asset.model;
+    }
+    if (handleChangeRadio === "sensors") {
+      return asset.sensors[0];
+    }
+  }
 
   return (
     <div className="main-container">
       {openModal === true && modal()}
       <div className="margin-container">⠀</div>
-
       <SearchBar
+        placeholderBtn={`Search ${handleChangeRadio}`}
         onChangeBtn={(e) => setSearchValue(e.target.value)}
         filterBody={
           <div className="filter-body-container">
-            {filterTags().map((tag) => {
-              return (
-                <span
-                  key={tag.id}
-                  className="filter-tags"
-                  style={onClickBold()}
-                >
-                  {tag.name}
-                </span>
-              );
-            })}
+            <div onChange={(e) => setHandleChangeRadio(e.target.value)}>
+              <input
+                type="radio"
+                value="name"
+                name="filter"
+                className="filter-radio"
+                checked={handleChangeRadio === "name" ? true : false}
+              />{" "}
+              Name
+              <input
+                type="radio"
+                value="model"
+                name="filter"
+                className="filter-radio"
+                checked={handleChangeRadio === "model" ? true : false}
+              />{" "}
+              Model
+              <input
+                type="radio"
+                value="sensors"
+                name="filter"
+                className="filter-radio"
+                checked={handleChangeRadio === "sensors" ? true : false}
+              />{" "}
+              Sensors
+            </div>
           </div>
         }
       />
-      <div className="title-container">Assets</div>
+      <div className="title-container">
+        <span>Assets</span>
+      </div>
 
       <table className="table-container">
         <thead>
           <tr>
             <th className="center">ID</th>
             <th className="left">Name</th>
-
             <th className="left">Sensors</th>
             <th className="center">Status</th>
             <th className="center">More</th>
@@ -253,7 +251,9 @@ function Assets() {
           {assets
             ?.filter((asset) => {
               return searchValue !== ""
-                ? asset.model.toLowerCase().includes(searchValue.toLowerCase())
+                ? changeFilter(asset)
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase())
                 : asset;
             })
             .map((asset) => (

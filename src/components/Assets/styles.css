@@ -26,9 +26,8 @@
   margin-bottom: 13px;
 }
 
-.filter-tags {
-  margin: 5.4px;
-  cursor:pointer
+.filter-radio {
+  margin-left: 9px;
 }
 
 .title-container {

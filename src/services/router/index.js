@@ -8,6 +8,7 @@ import Companies from "../../components/Companies/index";
 import Navbar from "../../components/Navbar/index";
 import Home from "../../components/Home/index";
 import { DataContext } from "../../contexts/DataContext";
+
 import api from "../api/index";
 
 const Paths = () => {
@@ -23,7 +24,6 @@ const Paths = () => {
         setUsers(data.users);
         setCompanies(data.companies);
         setUnits(data.units);
-        console.log('oi')
       });
     }, []);
   return (

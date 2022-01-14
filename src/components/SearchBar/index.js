@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BiSearch, BiCaretDown, BiCaretUp } from "react-icons/bi";
 import "./styles.css";
 
-function SearchBar({ onChangeBtn, filterBody }) {
+function SearchBar({ onChangeBtn, filterBody, placeholderBtn }) {
   const [openFilter, setOpenFilter] = useState(false);
 
   function handleFilter() {
@@ -13,12 +13,12 @@ function SearchBar({ onChangeBtn, filterBody }) {
     <div className="main-container-search">
       <div className="search-container">
         <span>
-          <BiSearch className="search-icon" />{" "}
+          <BiSearch className="search-icon" />
         </span>
         <input
           type="text"
           className="input-element"
-          placeholder="Search"
+          placeholder={placeholderBtn}
           onChange={onChangeBtn}
         ></input>
         <span>
