@@ -6,9 +6,11 @@ function Units() {
   return (
     <div className="main-container">
       <div className="margin-container">⠀</div>
-      <div className="title-container">
+      
+      <div className="container-outside-table">
+      <div className="title-container center">
         
-        Units
+        <span className="title-element">Units</span>
       </div>
       <table className="table-container">
         <thead>
@@ -28,6 +30,7 @@ function Units() {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 

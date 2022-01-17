@@ -1,6 +1,6 @@
 .main-container-search {
-  margin-right: 30px;
-  height: 60px;
+  height: 40px;
+  z-index: 1;
 }
 
 .search-container {
@@ -32,6 +32,12 @@
 }
 
 .filter-container {
-  height: 50px;
   display: flex;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.877);
+  margin-top: 5px;
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 5px;
+  justify-content: space-evenly;
+  padding-bottom: 6px;
 }

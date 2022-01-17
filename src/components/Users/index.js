@@ -7,8 +7,10 @@ function Users() {
   return (
     <div className="main-container">
       <div className="margin-container">⠀</div>
-      <div className="title-container">
-        Users
+      
+      <div className="container-outside-table">
+      <div className="title-container center">
+        <span  className="title-element">Users</span>
       </div>
       <table className="table-container">
         <thead>
@@ -20,18 +22,18 @@ function Users() {
 
           </tr>
         </thead>
+       
         <tbody>
           {users?.map((user) => (
             <tr key={user.id}>
               <td className="center">{user.id}</td>
               <td className="left">{user.name}</td>
               <td className="left">{user.email}</td>
-              
-            
             </tr>
           ))}
         </tbody>
       </table>
+       </div>
     </div>
   );
 }

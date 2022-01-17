@@ -199,82 +199,94 @@ function Assets() {
     <div className="main-container">
       {openModal === true && modal()}
       <div className="margin-container">⠀</div>
-      <SearchBar
-        placeholderBtn={`Search ${handleChangeRadio}`}
-        onChangeBtn={(e) => setSearchValue(e.target.value)}
-        filterBody={
-          <div className="filter-body-container">
-            <div onChange={(e) => setHandleChangeRadio(e.target.value)}>
-              <input
-                type="radio"
-                value="name"
-                name="filter"
-                className="filter-radio"
-                checked={handleChangeRadio === "name" ? true : false}
-              />{" "}
-              Name
-              <input
-                type="radio"
-                value="model"
-                name="filter"
-                className="filter-radio"
-                checked={handleChangeRadio === "model" ? true : false}
-              />{" "}
-              Model
-              <input
-                type="radio"
-                value="sensors"
-                name="filter"
-                className="filter-radio"
-                checked={handleChangeRadio === "sensors" ? true : false}
-              />{" "}
-              Sensors
+      <div className="container-outside-table">
+        <div className="table-container">
+          <div className="searchbar-title-container">
+            <div className="title-container-assets">
+              <span className="title-element">Assets</span>
             </div>
-          </div>
-        }
-      />
-      <div className="title-container">
-        <span>Assets</span>
-      </div>
-
-      <table className="table-container">
-        <thead>
-          <tr>
-            <th className="center">ID</th>
-            <th className="left">Name</th>
-            <th className="left">Sensors</th>
-            <th className="center">Status</th>
-            <th className="center">More</th>
-          </tr>
-        </thead>
-        <tbody>
-          {assets
-            ?.filter((asset) => {
-              return searchValue !== ""
-                ? changeFilter(asset)
-                    .toLowerCase()
-                    .includes(searchValue.toLowerCase())
-                : asset;
-            })
-            .map((asset) => (
-              <tr key={asset.id}>
-                <td className="center">{asset.id}</td>
-                <td className="left">{asset.name}</td>
-
-                <td className="left">{asset.sensors}</td>
-                <td className="center">{statusIcon(asset)}</td>
-                <td className="center">
-                  <div>
-                    <HiDotsHorizontal
-                      className="more-icon center"
-                      onClick={() => openMore(asset)}
-                    />
+            <SearchBar
+              placeholderBtn={`Search ${handleChangeRadio}`}
+              onChangeBtn={(e) => setSearchValue(e.target.value)}
+              filterBody={
+                <div className="filter-body-container">
+                  <div onChange={(e) => setHandleChangeRadio(e.target.value)}>
+                    <input
+                      type="radio"
+                      value="name"
+                      name="filter"
+                      className="filter-radio"
+                      defaultChecked={
+                        handleChangeRadio === "name" ? true : false
+                      }
+                    />{" "}
+                    <span className="filter-element">Name</span>
+                    <input
+                      type="radio"
+                      value="model"
+                      name="filter"
+                      className="filter-radio"
+                      defaultChecked={
+                        handleChangeRadio === "model" ? true : false
+                      }
+                    />{" "}
+                    <span className="filter-element">Model</span>
+                    <input
+                      type="radio"
+                      value="sensors"
+                      name="filter"
+                      className="filter-radio"
+                      defaultChecked={
+                        handleChangeRadio === "sensors" ? true : false
+                      }
+                    />{" "}
+                    <span className="filter-element">Sensors</span>
                   </div>
-                </td>
+                </div>
+              }
+            />
+          </div>
+          <table className="table-container">
+            <thead>
+              <tr>
+                <th className="center">ID</th>
+                <th className="left">Name</th>
+                <th className="left">Sensors</th>
+                <th className="center">Status</th>
+                <th className="center">More</th>
               </tr>
-            ))}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {assets
+                ?.filter((asset) => {
+                  return searchValue !== ""
+                    ? changeFilter(asset)
+                        .toLowerCase()
+                        .includes(searchValue.toLowerCase())
+                    : asset;
+                })
+                .map((asset) => (
+                  <tr key={asset.id}>
+                    <td className="center">{asset.id}</td>
+                    <td className="left">{asset.name}</td>
+
+                    <td className="left">{asset.sensors}</td>
+                    <td className="center">
+                      <span className="icon-align">{statusIcon(asset)}</span>
+                    </td>
+                    <td className="center">
+                      <div>
+                        <span className="icon-align more-icon">
+                          <HiDotsHorizontal onClick={() => openMore(asset)} />
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

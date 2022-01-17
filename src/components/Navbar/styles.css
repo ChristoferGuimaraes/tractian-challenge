@@ -7,7 +7,7 @@ header {
   width: 100%;
   background: #1e3a8a;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-  z-index: 1;
+  z-index: 2;
 }
 
 .logo {
