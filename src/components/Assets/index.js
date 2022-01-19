@@ -19,6 +19,7 @@ function Assets() {
   const [tempAsset, setTempAsset] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [handleChangeRadio, setHandleChangeRadio] = useState("name");
+  const [notFound, setNotFound] = useState(null);
 
   ApiData();
 
@@ -62,6 +63,7 @@ function Assets() {
   function openMore(asset) {
     setTempAsset(asset);
     setOpenModal(true);
+    console.log(notFound);
   }
 
   function modal() {
@@ -183,16 +185,26 @@ function Assets() {
     }
   }
 
-  function changeFilter(asset) {
+  function changeFilter(assetElement) {
     if (handleChangeRadio === "name") {
-      return asset.name;
+      return assetElement.name;
     }
     if (handleChangeRadio === "model") {
-      return asset.model;
+      return assetElement.model;
     }
     if (handleChangeRadio === "sensors") {
-      return asset.sensors[0];
+      return assetElement.sensors[0];
     }
+  }
+
+  function filterArray() {
+    return (assets?.filter((asset) => {
+      return changeFilter(asset).toLowerCase().includes(searchValue.toLowerCase())
+    }))
+  }
+
+  function upperCaseFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   return (
@@ -285,6 +297,8 @@ function Assets() {
                 ))}
             </tbody>
           </table>
+          {}
+          {filterArray().length === 0 && <div className="not-found-container center">{`${upperCaseFirstLetter(handleChangeRadio)} not found`}</div>}
         </div>
       </div>
     </div>

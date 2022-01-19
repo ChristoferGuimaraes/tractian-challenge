@@ -109,6 +109,15 @@ th:last-child {
   font-size: 18px;
 }
 
+.not-found-container {
+  padding: 6px;
+  background-color: #345dce3f;
+  border-radius: 5px;
+  font-style: italic;
+  font-size: 21px;
+  color: rgb(104, 104, 104);
+}
+
 .modal-title {
   font-size: 21px;
   margin-bottom: 8px;
