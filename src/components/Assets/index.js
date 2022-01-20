@@ -19,7 +19,6 @@ function Assets() {
   const [tempAsset, setTempAsset] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [handleChangeRadio, setHandleChangeRadio] = useState("name");
-  const [notFound, setNotFound] = useState(null);
 
   ApiData();
 
@@ -63,7 +62,6 @@ function Assets() {
   function openMore(asset) {
     setTempAsset(asset);
     setOpenModal(true);
-    console.log(notFound);
   }
 
   function modal() {
