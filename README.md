@@ -15,7 +15,7 @@ Libs and Frameworks that was used:
 - [Axios](https://axios-http.com/)
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [MomentJS](https://momentjs.com/)
-- [Highcgarts](https://www.highcharts.com/)
+- [Highcharts](https://www.highcharts.com/)
 
 ## Getting Started
 
